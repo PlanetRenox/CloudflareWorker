@@ -1,9 +1,6 @@
----
 name: Create Cloudflare Worker
-
 on:
   workflow_dispatch:
-
 jobs:
   setup-cloudflare:
     runs-on: ubuntu-latest
