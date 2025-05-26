@@ -1,13 +1,25 @@
 on:
   workflow_dispatch:
+
 jobs:
   setup-cloudflare:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+
       - run: |
-          npm create cloudflare@latest . -- --category=hello-world --type=openapi --no-deploy --no-git
-          ls -la cloudflare-app
+          npm create cloudflare@latest w -- --category=hello-world --type=openapi --no-deploy --no-git
+          ls -la
+
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "Initialize Cloudflare Worker project"
+          git push
