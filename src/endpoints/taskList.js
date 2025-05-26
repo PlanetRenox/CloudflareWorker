@@ -1,6 +1,6 @@
 import { Bool, Num, OpenAPIRoute } from "chanfana";
 import { z } from "zod";
-import { type AppContext, Task } from "../types";
+import { Task } from "../types.js";
 
 export class TaskList extends OpenAPIRoute {
 	schema = {
@@ -37,9 +37,9 @@ export class TaskList extends OpenAPIRoute {
 		},
 	};
 
-	async handle(c: AppContext) {
+	async handle(c) {
 		// Get validated data
-		const data = await this.getValidatedData<typeof this.schema>();
+		const data = await this.getValidatedData();
 
 		// Retrieve the validated parameters
 		const { page, isCompleted } = data.query;

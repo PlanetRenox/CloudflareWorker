@@ -1,6 +1,6 @@
 import { Bool, OpenAPIRoute } from "chanfana";
 import { z } from "zod";
-import { type AppContext, Task } from "../types";
+import { Task } from "../types.js";
 
 export class TaskCreate extends OpenAPIRoute {
 	schema = {
@@ -34,9 +34,9 @@ export class TaskCreate extends OpenAPIRoute {
 		},
 	};
 
-	async handle(c: AppContext) {
+	async handle(c) {
 		// Get validated data
-		const data = await this.getValidatedData<typeof this.schema>();
+		const data = await this.getValidatedData();
 
 		// Retrieve the validated request body
 		const taskToCreate = data.body;
