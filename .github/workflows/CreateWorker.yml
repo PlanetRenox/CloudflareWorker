@@ -9,5 +9,5 @@ jobs:
         with:
           node-version: '22'
       - run: |
-          npm create cloudflare@latest cloudflare-app -- --category=hello-world --type=openapi --no-deploy --no-git
+          npm create cloudflare@latest . -- --category=hello-world --type=openapi --no-deploy --no-git
           ls -la cloudflare-app
