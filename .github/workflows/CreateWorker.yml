@@ -1,8 +1,7 @@
 on:
   workflow_dispatch:
 
-permissions:
-  actions: all
+permissions: write-all
 jobs:
   setup-cloudflare:
     runs-on: ubuntu-latest
